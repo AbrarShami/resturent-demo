@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ee">
+  <meta name="description" content="Explore the Bella Vista restaurant menu featuring handcrafted burgers, fresh pasta, delicious pizza, desserts and refreshing drinks.">
+  <meta property="og:title" content="Bella Vista | Modern Restaurant & Food Menu">
+  <meta property="og:description" content="Fresh ingredients, handcrafted favorites and memorable flavors. Explore the Bella Vista menu.">
+  <meta property="og:type" content="website">
+  <title>Bella Vista | Modern Restaurant & Food Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --surface: #ffffff;
+      --surface-2: #f0ece4;
+      --surface-3: #e8e1d5;
+      --text: #24221e;
+      --muted: #777168;
+      --gold: #a77b35;
+      --line: rgba(36,34,30,.12);
+      --radius: 16px;
+      --ease: cubic-bezier(.22,1,.36,1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: "Manrope", sans-serif; font-size: 16px; line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    img { display: block; width: 100%; object-fit: cover; }
+    .skip-link { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--gold); color: #111; padding: 10px 14px; border-radius: 8px; }
+    .skip-link:focus { top: 12px; }
+    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; font-weight: 700; }
+    .topbar {
+      position: sticky; top: 12px; z-index: 20; width: min(1120px, calc(100% - 24px));
+      margin: 12px auto 0; padding: 12px 16px; border: 1px solid var(--line);
+      border-radius: 999px; background: rgba(255,255,255,.90); backdrop-filter: blur(18px);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .brand-mark { width: 34px; height: 34px; border: 1px solid rgba(213,179,106,.65); border-radius: 50%; display: grid; place-items: center; color: var(--gold); font-size: 14px; font-weight: 700; }
+    .brand-name { font-size: 14px; font-weight: 700; letter-spacing: .12em; white-space: nowrap; }
+    .nav { display: flex; align-items: center; gap: 26px; color: #625d54; font-size: 13px; }
+    .nav a { transition: color 300ms var(--ease); }
+    .nav a:hover, .nav a:focus-visible { color: var(--gold); }
+    .nav-cta, .primary-btn {
+      background: var(--gold); color: #ffffff; border: 0; border-radius: 999px;
+      padding: 10px 17px; font-size: 13px; font-weight: 700; display: inline-flex;
+      align-items: center; justify-content: center; transition: transform 500ms var(--ease), background 300ms var(--ease);
+    }
+    .nav-cta:hover, .primary-btn:hover { transform: translateY(-2px); background: #8f672b; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+    .hero { padding: 54px 0 42px; }
+    .hero-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 42px; align-items: center; }
+    .hero-copy { padding: 18px 0; }
+    h1 { font-size: clamp(42px, 6vw, 68px); line-height: 1.02; letter-spacing: -.055em; font-weight: 700; max-width: 620px; margin: 18px 0; text-wrap: balance; background: linear-gradient(90deg,#24221e,#777168); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-copy p { max-width: 510px; color: #777168; line-height: 1.8; margin: 0 0 26px; text-wrap: pretty; }
+    .hero-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .text-link { color: var(--text); font-size: 13px; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.35); padding-bottom: 4px; }
+    .hero-meta { display: flex; gap: 24px; margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .hero-meta strong { display: block; color: var(--text); font-size: 14px; margin-bottom: 3px; }
+    .hero-image-wrap { position: relative; min-height: 470px; border-radius: 24px; overflow: hidden; background: var(--surface); }
+    .hero-image { position: absolute; inset: 0; height: 100%; object-position: center; }
+    .hero-image-wrap:after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent,rgba(0,0,0,.58)); }
+    .image-note { position: absolute; z-index: 1; bottom: 22px; left: 22px; right: 22px; display: flex; justify-content: space-between; align-items: end; gap: 12px; }
+    .image-note strong { font-size: 17px; }
+    .image-note span { color: #f4eee2; font-size: 12px; }
+    .section { padding: 68px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 26px; }
+    h2 { font-size: clamp(30px,4vw,44px); line-height: 1.1; letter-spacing: -.045em; margin: 9px 0 0; font-weight: 700; text-wrap: balance; }
+    .section-intro { color: var(--muted); max-width: 430px; font-size: 14px; line-height: 1.8; margin: 0; }
+    .tagline { padding: 82px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .tagline p { max-width: 850px; margin: 0; font-size: clamp(32px,5.4vw,58px); line-height: 1.12; letter-spacing: -.05em; font-weight: 600; color: rgba(245,241,232,.30); }
+    .tagline .word { display: inline-block; margin-right: .22em; transition: color 700ms var(--ease); }
+    .tagline .word.on { color: var(--text); }
+    .menu-tools { display: flex; flex-direction: column; gap: 18px; }
+    .category-row { display: flex; gap: 8px; overflow-x: auto; padding: 2px 0 8px; scrollbar-width: none; }
+    .category-row::-webkit-scrollbar { display: none; }
+    .category {
+      flex: 0 0 auto; border: 1px solid var(--line); background: var(--surface);
+      color: #625d54; padding: 9px 15px; border-radius: 999px; font-size: 12px; font-weight: 600;
+      transition: background 300ms var(--ease), color 300ms var(--ease), border-color 300ms var(--ease);
+    }
+    .category:hover { border-color: rgba(213,179,106,.6); color: var(--text); }
+    .category.active { background: var(--gold); color: #ffffff; border-color: var(--gold); }
+    .search-wrap { position: relative; width: 100%; max-width: 360px; }
+    .search-wrap input { width: 100%; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); padding: 12px 16px 12px 42px; outline: none; font-size: 13px; }
+    .search-wrap input:focus { border-color: var(--gold); }
+    .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 16px; }
+    .menu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 10px; }
+    .dish-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: transform 500ms var(--ease), border-color 300ms var(--ease); }
+    .dish-card:hover { transform: translateY(-4px); border-color: rgba(213,179,106,.45); }
+    .dish-image { height: 190px; background: var(--surface-3); }
+    .dish-content { padding: 16px; }
+    .dish-top { display: flex; justify-content: space-between; align-items: start; gap: 10px; }
+    .dish-title { font-size: 15px; font-weight: 700; line-height: 1.35; }
+    .price { color: var(--gold); font-size: 14px; font-weight: 700; white-space: nowrap; }
+    .dish-description { color: var(--muted); font-size: 12px; line-height: 1.7; margin: 9px 0 13px; min-height: 40px; }
+    .dish-meta { display: flex; align-items: center; justify-content: space-between; color: #81796d; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .popular-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 18px; }
+    .feature-dish { min-height: 340px; position: relative; border-radius: 20px; overflow: hidden; background: var(--surface); }
+    .feature-dish img { position: absolute; inset: 0; height: 100%; }
+    .feature-dish:after { content: ""; position: absolute; inset: 30% 0 0; background: linear-gradient(transparent,rgba(0,0,0,.68)); }
+    .feature-copy { position: absolute; z-index: 1; left: 22px; right: 22px; bottom: 22px; }
+    .feature-copy h3 { font-size: 24px; margin: 8px 0 4px; letter-spacing: -.03em; }
+    .feature-copy p { color: #eee7dc; font-size: 13px; margin: 0; }
+    .side-feature { display: grid; grid-template-rows: 1fr 1fr; gap: 18px; }
+    .small-feature { display: grid; grid-template-columns: 42% 1fr; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; min-height: 160px; }
+    .small-feature img { height: 100%; min-height: 160px; }
+    .small-feature div { padding: 17px; display: flex; flex-direction: column; justify-content: center; }
+    .small-feature h3 { font-size: 15px; margin: 0 0 7px; }
+    .small-feature p { color: var(--muted); font-size: 12px; line-height: 1.6; margin: 0 0 9px; }
+    .small-feature strong { color: var(--gold); font-size: 13px; }
+    .info-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .info-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+    .info-icon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: var(--surface-3); color: var(--gold); margin-bottom: 18px; }
+    .info-card h3 { font-size: 15px; margin: 0 0 8px; }
+    .info-card p { font-size: 13px; color: var(--muted); line-height: 1.8; margin: 0; }
+    .footer { padding: 34px 0 26px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer a:hover { color: var(--gold); }
+    .empty { grid-column: 1/-1; padding: 36px 20px; text-align: center; background: var(--surface); border-radius: 16px; color: var(--muted); }
+    .mobile-bottom { display: none; }
+    .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%,20px); opacity: 0; pointer-events: none; background: var(--gold); color: #ffffff; padding: 11px 16px; border-radius: 999px; font-size: 12px; font-weight: 700; z-index: 50; transition: opacity 300ms var(--ease), transform 500ms var(--ease); }
+    .toast.show { opacity: 1; transform: translate(-50%,0); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .tagline .word { color: var(--text); }
+    }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 32px, 560px); }
+      .topbar { top: 8px; margin-top: 8px; width: calc(100% - 16px); padding: 10px 12px; }
+      .nav { display: none; }
+      .nav-cta { padding: 9px 13px; font-size: 12px; }
+      .hero { padding: 38px 0 24px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+      .hero-copy { padding: 0; }
+      h1 { font-size: clamp(42px,12vw,58px); max-width: 500px; }
+      .hero-copy p { font-size: 14px; }
+      .hero-image-wrap { min-height: 300px; border-radius: 18px; }
+      .hero-meta { gap: 18px; margin-top: 26px; }
+      .section { padding: 52px 0; }
+      .section-head { align-items: start; flex-direction: column; margin-bottom: 20px; }
+      .section-intro { font-size: 13px; }
+      .tagline { padding: 60px 0; }
+      .tagline p { font-size: clamp(34px,9vw,48px); }
+      .search-wrap { max-width: none; }
+      .menu-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+      .dish-image { height: 142px; }
+      .dish-content { padding: 12px; }
+      .dish-title { font-size: 13px; }
+      .price { font-size: 12px; }
+      .dish-description { font-size: 11px; min-height: 54px; margin: 7px 0 10px; }
+      .dish-meta { font-size: 9px; }
+      .popular-grid { grid-template-columns: 1fr; }
+      .feature-dish { min-height: 300px; }
+      .side-feature { grid-template-rows: none; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .small-feature { grid-template-columns: 1fr; }
+      .small-feature img { height: 125px; min-height: 125px; }
+      .small-feature div { padding: 12px; }
+      .small-feature h3 { font-size: 13px; }
+      .small-feature p { font-size: 11px; }
+      .info-grid { grid-template-columns: 1fr; gap: 10px; }
+      .info-card { display: grid; grid-template-columns: 42px 1fr; column-gap: 14px; padding: 16px; }
+      .info-icon { grid-row: span 2; margin: 0; }
+      .info-card h3 { margin: 1px 0 4px; }
+      .footer-row { align-items: start; flex-direction: column; }
+      .mobile-bottom { display: flex; position: fixed; z-index: 30; bottom: 10px; left: 12px; right: 12px; padding: 9px; background: rgba(255,255,255,.96); border: 1px solid var(--line); border-radius: 999px; backdrop-filter: blur(18px); }
+      .mobile-bottom a { flex: 1; text-align: center; padding: 9px 8px; font-size: 12px; font-weight: 700; border-radius: 999px; }
+      .mobile-bottom a:first-child { background: var(--gold); color: #ffffff; }
+      .footer { padding-bottom: 100px; }
+    }
+    @media (max-width: 360px) {
+      .menu-grid { grid-template-columns: 1fr; }
+      .dish-image { height: 190px; }
+      .side-feature { grid-template-columns: 1fr; }
+      .small-feature { grid-template-columns: 42% 1fr; }
+      .small-feature img { height: 100%; min-height: 145px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar" aria-label="Main navigation">
+    <a class="brand" href="#top" aria-label="Bella Vista home">
+      <span class="brand-mark">BV</span><span class="brand-name">BELLA VISTA</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#menu">Menu</a><a href="#favorites">Favorites</a><a href="#visit">Visit us</a>
+    </nav>
+    <a class="nav-cta" href="#menu">View menu <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" id="top">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">A little taste of something special</div>
+          <h1>Good food.<br>Great moments.</h1>
+          <p>Fresh ingredients, handcrafted favorites and memorable flavors. Pull up a chair, explore our menu and find your next favorite dish.</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#menu">Explore our menu <span aria-hidden="true">&nbsp;↗</span></a>
+            <a class="text-link" href="#visit">Find your table</a>
+          </div>
+          <div class="hero-meta">
+            <div><strong>Made with care</strong><span>Fresh, thoughtful plates</span></div>
+            <div><strong>Good company</strong><span>Come as you are</span></div>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img class="hero-image" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=85" alt="Warm, welcoming modern restaurant dining room">
+          <div class="image-note"><div><strong>Welcome to Bella Vista</strong><br><span>Gather around something delicious</span></div><span>EST. 2021</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tagline" aria-label="Restaurant promise">
+      <div class="shell">
+        <p id="taglineText">Made for sharing. Remembered for the flavor. Always room for one more.</p>
+      </div>
+    </section>
+
+    <section class="section shell" id="menu">
+      <div class="section-head">
+        <div><div class="eyebrow">Something for every craving</div><h2>Explore the menu</h2></div>
+        <p class="section-intro">From the first bite to the last sip, find a little something worth slowing down for.</p>
+      </div>
+      <div class="menu-tools">
+        <div class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="menuSearch" type="search" placeholder="Search dishes..." aria-label="Search menu dishes"></div>
+        <div class="category-row" id="categories" aria-label="Menu categories">
+          <button class="category active" data-category="All" aria-pressed="true">All items</button>
+          <button class="category" data-category="Starters" aria-pressed="false">Starters</button>
+          <button class="category" data-category="Burgers" aria-pressed="false">Burgers</button>
+          <button class="category" data-category="Pizza" aria-pressed="false">Pizza</button>
+          <button class="category" data-category="Pasta" aria-pressed="false">Pasta</button>
+          <button class="category" data-category="Desserts" aria-pressed="false">Desserts</button>
+          <button class="category" data-category="Drinks" aria-pressed="false">Drinks</button>
+        </div>
+      </div>
+      <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="section shell" id="favorites">
+      <div class="section-head">
+        <div><div class="eyebrow">A few guest favorites</div><h2>Worth coming back for</h2></div>
+        <p class="section-intro">A closer look at a few plates that bring comfort, character and a little extra joy to the table.</p>
+      </div>
+      <div class="popular-grid">
+        <article class="feature-dish">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=85" alt="Signature double cheeseburger with lettuce, tomato and sauce">
+          <div class="feature-copy"><span class="eyebrow">The house favorite</span><h3>Bella Vista double burger</h3><p>Two seared beef patties, aged cheddar and our house sauce.</p></div>
+        </article>
+        <div class="side-feature">
+          <article class="small-feature">
+            <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=85" alt="Fresh pasta with herbs and parmesan">
+            <div><h3>Silky parmesan pasta</h3><p>Comfort in every forkful.</p><strong>$15.50</strong></div>
+          </article>
+          <article class="small-feature">
+            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=700&q=85" alt="Freshly baked pizza with basil">
+            <div><h3>Garden margherita</h3><p>Simple ingredients, lovely flavor.</p><strong>$14.00</strong></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="visit">
+      <div class="section-head">
+        <div><div class="eyebrow">Come by and say hello</div><h2>Make yourself at home.</h2></div>
+        <p class="section-intro">Whether it is a quick lunch or a long dinner, there is always a place for you at Bella Vista.</p>
+      </div>
+      <div class="info-grid">
+        <article class="info-card"><div class="info-icon" aria-hidden="true">⌖</div><h3>Find us</h3><p>128 Market Street<br>Brooklyn, NY 11201<br><span style="color:#81796d">Fictional demo address</span></p></article>
+        <article class="info-card"><div class="info-icon" aria-hidden="true">◷</div><h3>Opening hours</h3><p>Mon – Thu: 11:00 AM – 9:00 PM<br>Fri – Sun: 11:00 AM – 10:00 PM<br><span style="color:#81796d">Sample hours for demo</span></p></article>
+        <article class="info-card"><div class="info-icon" aria-hidden="true">✉</div><h3>Get in touch</h3><p><a href="mailto:hello@bellavista.example">hello@bellavista.example</a><br><a href="tel:+12125550184">+1 (212) 555 0184</a><br><span style="color:#81796d">Demo contact details</span></p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-row">
+      <div><a class="brand" href="#top"><span class="brand-mark">BV</span><span class="brand-name">BELLA VISTA</span></a><p>Good food. Great moments. <span style="color:#81796d">© <span id="year"></span> Bella Vista demo.</span></p></div>
+      <div class="footer-links"><a href="#visit">Contact</a><a href="#menu">Menu</a><a href="#top">Back to top ↑</a></div>
+    </div>
+  </footer>
+
+  <nav class="mobile-bottom" aria-label="Quick navigation"><a href="#menu">Explore menu</a><a href="#visit">Visit us</a></nav>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const dishes = [
+      {name:"Golden garlic bread",category:"Starters",price:6.50,desc:"Toasted sourdough, roasted garlic butter and fresh parsley.",tag:"A lovely start",img:"photo-1761344788266-5f6957aeea33"},
+      {name:"Crispy buffalo wings",category:"Starters",price:9.50,desc:"Crisp chicken wings tossed in a tangy house buffalo glaze.",tag:"Guest favorite",img:"photo-1527477396000-e27163b481c2"},
+      {name:"Burrata tomato salad",category:"Starters",price:10.00,desc:"Creamy burrata, ripe tomatoes, basil and aged balsamic.",tag:"Fresh pick",img:"photo-1512621776951-a57141f2eefd"},
+      {name:"Bella Vista double burger",category:"Burgers",price:15.50,desc:"Two seared beef patties, aged cheddar, crisp lettuce and house sauce.",tag:"House favorite",img:"photo-1568901346375-23c9450c58cd"},
+      {name:"Smoky BBQ chicken burger",category:"Burgers",price:13.50,desc:"Grilled chicken, smoky barbecue glaze, slaw and pickles.",tag:"Full of flavor",img:"photo-1606755962773-d324e0a13086"},
+      {name:"Crispy garden burger",category:"Burgers",price:12.50,desc:"Golden vegetable patty, avocado, greens and lemon herb mayo.",tag:"Plant forward",img:"photo-1520072959219-c595dc870360"},
+      {name:"Garden margherita",category:"Pizza",price:14.00,desc:"Tomato, fresh mozzarella, basil and a drizzle of olive oil.",tag:"Simple favorite",img:"photo-1574071318508-1cdbab80d002"},
+      {name:"Smoky chicken pizza",category:"Pizza",price:17.50,desc:"Roasted chicken, smoked mozzarella, red onion and barbecue sauce.",tag:"Wood fired style",img:"photo-1565299624946-b28f40a0ae38"},
+      {name:"Roasted mushroom pizza",category:"Pizza",price:16.00,desc:"Roasted mushrooms, mozzarella, thyme and garlic cream.",tag:"Rich & earthy",img:"photo-1593560708920-61dd98c46a4e"},
+      {name:"Creamy parmesan alfredo",category:"Pasta",price:15.50,desc:"Fettuccine in a silky parmesan cream sauce with cracked pepper.",tag:"Comfort food",img:"photo-1473093295043-cdd812d0e601"},
+      {name:"Slow cooked tomato rigatoni",category:"Pasta",price:14.50,desc:"Rigatoni with slow simmered tomato, basil and shaved parmesan.",tag:"House made sauce",img:"photo-1551183053-bf91a1d81141"},
+      {name:"Lemon herb chicken pasta",category:"Pasta",price:16.50,desc:"Tender chicken, lemon cream, herbs and fresh parmesan.",tag:"Bright & creamy",img:"photo-1555949258-eb67b1ef0ceb"},
+      {name:"Classic baked cheesecake",category:"Desserts",price:7.50,desc:"Creamy vanilla cheesecake with a buttery biscuit base.",tag:"Sweet finish",img:"photo-1533134242443-d4fd215305ad"},
+      {name:"Chocolate lava cake",category:"Desserts",price:8.50,desc:"Warm chocolate cake with a soft center and vanilla ice cream.",tag:"Rich & warm",img:"photo-1606313564200-e75d5e30476c"},
+      {name:"Seasonal berry bowl",category:"Desserts",price:7.00,desc:"Fresh seasonal berries with lightly whipped vanilla cream.",tag:"Fresh & light",img:"photo-1490474418585-ba9bad8fd0ea"},
+      {name:"Fresh mint lemonade",category:"Drinks",price:4.50,desc:"Freshly squeezed lemon, garden mint and a touch of sweetness.",tag:"House refresher",img:"photo-1513558161293-cdaa741c7f84"},
+      {name:"Iced caramel latte",category:"Drinks",price:5.50,desc:"Chilled espresso, creamy milk and a ribbon of caramel.",tag:"Coffee bar",img:"photo-1461023058943-07fcbe16d735"},
+      {name:"Sparkling berry cooler",category:"Drinks",price:5.00,desc:"Mixed berries, lime and sparkling water over ice.",tag:"Bright & bubbly",img:"photo-1513558161293-cdaa741c7f84"}
+    ];
+    const grid = document.getElementById("menuGrid");
+    const search = document.getElementById("menuSearch");
+    let activeCategory = "All";
+    const money = value => "$" + value.toFixed(2);
+    function renderMenu() {
+      const query = search.value.trim().toLowerCase();
+      const visible = dishes.filter(d => (activeCategory === "All" || d.category === activeCategory) &&
+        (d.name.toLowerCase().includes(query) || d.desc.toLowerCase().includes(query) || d.category.toLowerCase().includes(query)));
+      grid.innerHTML = visible.length ? visible.map(d => `
+        <article class="dish-card">
+          <img class="dish-image" src="https://images.unsplash.com/${d.img}?auto=format&fit=crop&w=800&q=80" alt="${d.name}" loading="lazy">
+          <div class="dish-content">
+            <div class="dish-top"><div class="dish-title">${d.name}</div><div class="price">${money(d.price)}</div></div>
+            <p class="dish-description">${d.desc}</p>
+            <div class="dish-meta"><span>${d.category}</span><span>${d.tag}</span></div>
+          </div>
+        </article>`).join("") : `<div class="empty">No dishes found. Try another search or category.</div>`;
+    }
+    document.querySelectorAll(".category").forEach(button => {
+      button.addEventListener("click", () => {
+        activeCategory = button.dataset.category;
+        document.querySelectorAll(".category").forEach(item => {
+          const selected = item === button;
+          item.classList.toggle("active", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
+        renderMenu();
+      });
+    });
+    search.addEventListener("input", renderMenu);
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderMenu();
+
+    const tagline = document.getElementById("taglineText");
+    const words = tagline.textContent.trim().split(/\s+/);
+    tagline.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(" ");
+    const wordEls = [...tagline.querySelectorAll(".word")];
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const index = wordEls.indexOf(entry.target);
+            wordEls.slice(0, index + 1).forEach(el => el.classList.add("on"));
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .1, rootMargin: "0px 0px -12% 0px" });
+      wordEls.forEach(el => observer.observe(el));
+    } else {
+      wordEls.forEach(el => el.classList.add("on"));
+    }
+  </script>
+</body>
+</html>
