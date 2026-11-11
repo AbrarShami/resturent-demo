@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ee">
+  <meta name="description" content="Browse the Bella Vista food and drinks menu, with descriptions and prices.">
+  <meta property="og:title" content="Bella Vista | Digital Menu">
+  <meta property="og:description" content="Explore our food and drinks menu. Good food. Great moments.">
+  <title>Bella Vista | Digital Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f7f4ee;--surface:#fff;--surface2:#f0ece4;--text:#24221e;--muted:#777168;--gold:#a77b35;--line:rgba(36,34,30,.12);--radius:18px;--ease:cubic-bezier(.22,1,.36,1)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:120px}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 "Manrope",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button,input{font:inherit}.shell{width:min(900px,calc(100% - 32px));margin:auto}
+    .top{position:sticky;top:8px;z-index:10;width:min(900px,calc(100% - 16px));margin:8px auto 0;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800;letter-spacing:.13em}.mark{width:34px;height:34px;border:1px solid rgba(167,123,53,.55);border-radius:50%;display:grid;place-items:center;color:var(--gold);letter-spacing:0}.top-link{font-size:12px;color:var(--muted);font-weight:700}
+    .intro{text-align:center;padding:42px 0 26px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;color:var(--gold);font-size:11px;font-weight:800}.intro h1{font-size:clamp(38px,8vw,58px);line-height:1.05;letter-spacing:-.055em;margin:12px 0 10px}.intro p{max-width:490px;margin:0 auto;color:var(--muted);font-size:13px}
+    .notice{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 auto 22px;color:var(--muted);font-size:11px}.dot{width:7px;height:7px;background:#6f8c5a;border-radius:50%}
+    .tools{position:sticky;top:62px;z-index:8;background:rgba(247,244,238,.94);backdrop-filter:blur(12px);padding:10px 0 12px}.search{width:100%;border:1px solid var(--line);border-radius:999px;background:#fff;padding:13px 17px;color:var(--text);font-size:13px;outline:none}.search:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(167,123,53,.12)}
+    .cats{display:flex;gap:8px;overflow-x:auto;padding:12px 0 2px;scrollbar-width:none}.cats::-webkit-scrollbar{display:none}.cat{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;background:#fff;color:#625d54;padding:9px 14px;font-size:11px;font-weight:700;cursor:pointer;transition:all 300ms var(--ease)}.cat.active,.cat:hover{background:var(--gold);border-color:var(--gold);color:white}
+    .menu-section{padding:20px 0 48px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:10px 0 16px}.section-head h2{font-size:24px;letter-spacing:-.04em;margin:0}.count{color:var(--muted);font-size:11px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.item{display:grid;grid-template-columns:104px minmax(0,1fr);gap:13px;padding:10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;min-width:0;transition:transform 500ms var(--ease),border-color 300ms var(--ease)}.item:hover{transform:translateY(-2px);border-color:rgba(167,123,53,.4)}.item img{width:104px;height:112px;object-fit:cover;border-radius:11px;background:var(--surface2)}.details{min-width:0;display:flex;flex-direction:column;padding:3px 1px}.name-price{display:flex;justify-content:space-between;align-items:start;gap:8px}.name{font-size:13px;font-weight:800;line-height:1.35}.price{white-space:nowrap;color:var(--gold);font-size:12px;font-weight:800}.desc{font-size:10px;color:var(--muted);line-height:1.55;margin:7px 0 8px}.meta{margin-top:auto;display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:9px;text-transform:uppercase;letter-spacing:.07em;color:#81796d;background:var(--surface2);padding:4px 7px;border-radius:999px}
+    .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:35px;background:white;border-radius:16px}.foot{border-top:1px solid var(--line);padding:28px 0 40px;text-align:center;color:var(--muted);font-size:11px}.foot strong{display:block;color:var(--text);letter-spacing:.14em;font-size:12px;margin-bottom:7px}.foot a{color:var(--gold);font-weight:700}.disclaimer{margin-top:12px;font-size:10px}
+    @media(max-width:650px){.intro{padding:34px 0 20px}.tools{top:58px}.grid{grid-template-columns:1fr}.item{grid-template-columns:112px minmax(0,1fr);gap:14px;padding:10px}.item img{width:112px;height:116px}.name{font-size:14px}.desc{font-size:11px}.menu-section{padding-top:12px}.section-head h2{font-size:22px}}
+    @media(max-width:360px){.item{grid-template-columns:92px minmax(0,1fr);gap:10px}.item img{width:92px;height:108px}.name{font-size:12px}.price{font-size:11px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="index.html" aria-label="Bella Vista home"><span class="mark">BV</span><span>BELLA VISTA</span></a>
+    <a class="top-link" href="index.html">Restaurant website ↗</a>
+  </header>
+  <main class="shell">
+    <section class="intro">
+      <div class="eyebrow">Freshly made · Served with care</div>
+      <h1>Our Menu</h1>
+      <p>Explore the flavors, find your favorite and let us know what you'd like. We look forward to serving you.</p>
+    </section>
+    <div class="notice"><span class="dot" aria-hidden="true"></span> Menu and prices shown in USD</div>
+    <section class="tools" aria-label="Find menu items">
+      <input class="search" id="search" type="search" placeholder="Search dishes, ingredients..." aria-label="Search menu">
+      <div class="cats" id="categories" aria-label="Menu categories">
+        <button class="cat active" data-category="All" aria-pressed="true">All items</button>
+        <button class="cat" data-category="Starters" aria-pressed="false">Starters</button>
+        <button class="cat" data-category="Burgers" aria-pressed="false">Burgers</button>
+        <button class="cat" data-category="Pizza" aria-pressed="false">Pizza</button>
+        <button class="cat" data-category="Pasta" aria-pressed="false">Pasta</button>
+        <button class="cat" data-category="Desserts" aria-pressed="false">Desserts</button>
+        <button class="cat" data-category="Drinks" aria-pressed="false">Drinks</button>
+      </div>
+    </section>
+    <section class="menu-section" aria-live="polite">
+      <div class="section-head"><h2 id="heading">All menu favorites</h2><span class="count" id="count">18 items</span></div>
+      <div class="grid" id="menuGrid"></div>
+    </section>
+  </main>
+  <footer class="foot">
+    <div class="shell"><strong>BELLA VISTA</strong>Good food. Great moments.<div class="disclaimer">Sample menu for demonstration. Items, ingredients, prices and contact details should be confirmed by the restaurant.<br><a href="index.html">Visit our restaurant website</a></div></div>
+  </footer>
+  <script>
+    const dishes = [
+      {name:"Crispy Calamari",category:"Starters",price:"$12",desc:"Golden-fried calamari, lemon, herbs and house marinara.",tags:["Seafood"],img:"https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=85"},
+      {name:"Burrata & Tomato",category:"Starters",price:"$11",desc:"Creamy burrata, ripe tomatoes, basil and olive oil.",tags:["Vegetarian"],img:"https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=600&q=85"},
+      {name:"Truffle Parmesan Fries",category:"Starters",price:"$7",desc:"Crispy fries tossed with parmesan and truffle seasoning.",tags:["Vegetarian"],img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&q=85"},
+      {name:"Classic Beef Burger",category:"Burgers",price:"$15",desc:"Grilled beef, aged cheddar, lettuce, tomato and signature sauce.",tags:["Signature"],img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=85"},
+      {name:"Smoky BBQ Burger",category:"Burgers",price:"$16",desc:"Smoky barbecue glaze, crispy onion, cheddar and pickles.",tags:["Signature"],img:"https://images.unsplash.com/photo-1610440042657-612c34d95e9f?w=600&q=85"},
+      {name:"Garden Veggie Burger",category:"Burgers",price:"$14",desc:"House veggie patty, avocado, greens and herb dressing.",tags:["Vegetarian"],img:"https://images.unsplash.com/photo-1520072959219-c595dc870360?w=600&q=85"},
+      {name:"Margherita",category:"Pizza",price:"$14",desc:"Tomato, fresh mozzarella, basil and extra virgin olive oil.",tags:["Vegetarian"],img:"https://images.unsplash.com/photo-1579751626657-72bc17010498?w=600&q=85"},
+      {name:"Pepperoni Pizza",category:"Pizza",price:"$17",desc:"Classic pepperoni, mozzarella and slow-simmered tomato sauce.",tags:["Classic"],img:"https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&q=85"},
+      {name:"Roasted Veggie Pizza",category:"Pizza",price:"$16",desc:"Roasted peppers, mushrooms, red onion and mozzarella.",tags:["Vegetarian"],img:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=85"},
+      {name:"Creamy Alfredo",category:"Pasta",price:"$16",desc:"Fettuccine in a rich parmesan cream sauce with fresh parsley.",tags:["Vegetarian"],img:"https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600&q=85"},
+      {name:"Penne Arrabbiata",category:"Pasta",price:"$14",desc:"Penne with spicy tomato, garlic, chili and fresh basil.",tags:["Spicy"],img:"https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&q=85"},
+      {name:"Chicken Pesto Pasta",category:"Pasta",price:"$18",desc:"Grilled chicken, basil pesto, parmesan and tender pasta.",tags:["Popular"],img:"https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=85"},
+      {name:"Classic Tiramisu",category:"Desserts",price:"$8",desc:"Espresso-soaked layers, mascarpone cream and cocoa.",tags:["House favorite"],img:"https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=85"},
+      {name:"New York Cheesecake",category:"Desserts",price:"$8",desc:"Creamy baked cheesecake with a buttery biscuit base.",tags:["Classic"],img:"https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=85"},
+      {name:"Chocolate Brownie",category:"Desserts",price:"$7",desc:"Warm chocolate brownie served with vanilla ice cream.",tags:["Vegetarian"],img:"https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=85"},
+      {name:"Fresh Lemonade",category:"Drinks",price:"$5",desc:"Freshly squeezed lemon, a touch of sweetness and mint.",tags:["Refreshing"],img:"https://images.unsplash.com/photo-1623084921164-4a8c5c37a912?w=600&q=85"},
+      {name:"Iced Latte",category:"Drinks",price:"$5",desc:"Espresso and chilled milk poured over ice.",tags:["Coffee"],img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=85"},
+      {name:"Berry Fizz",category:"Drinks",price:"$6",desc:"A sparkling blend of berries, citrus and soda.",tags:["Refreshing"],img:"https://plus.unsplash.com/premium_photo-1776970851036-71e08d9fcf16?w=600&q=85"}
+    ];
+    let activeCategory="All";
+    const grid=document.getElementById("menuGrid"), search=document.getElementById("search");
+    function render(){
+      const term=search.value.trim().toLowerCase();
+      const visible=dishes.filter(d=>(activeCategory==="All"||d.category===activeCategory)&&(`${d.name} ${d.desc} ${d.tags.join(" ")}`).toLowerCase().includes(term));
+      document.getElementById("heading").textContent=activeCategory==="All"?"All menu favorites":activeCategory;
+      document.getElementById("count").textContent=`${visible.length} ${visible.length===1?"item":"items"}`;
+      grid.innerHTML=visible.length?visible.map(d=>`<article class="item"><img src="${d.img}" alt="${d.name}" loading="lazy"><div class="details"><div class="name-price"><span class="name">${d.name}</span><span class="price">${d.price}</span></div><p class="desc">${d.desc}</p><div class="meta"><span class="tag">${d.category}</span>${d.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div></div></article>`).join(""):'<div class="empty">No dishes found. Try another search or category.</div>';
+    }
+    document.getElementById("categories").addEventListener("click",e=>{
+      const btn=e.target.closest("button[data-category]");if(!btn)return;
+      activeCategory=btn.dataset.category;
+      document.querySelectorAll(".cat").forEach(b=>{const selected=b===btn;b.classList.toggle("active",selected);b.setAttribute("aria-pressed",String(selected));});
+      render();
+    });
+    search.addEventListener("input",render);
+    render();
+  </script>
+</body>
+</html>
